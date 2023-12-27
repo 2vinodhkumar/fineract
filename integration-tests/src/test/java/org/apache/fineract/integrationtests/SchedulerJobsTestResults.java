@@ -377,6 +377,78 @@ public class SchedulerJobsTestResults {
     }
 
     @Test
+    public void testApplyType1HolidaysToLoansJobOutcome() throws InterruptedException {
+        this.loanTransactionHelper = new LoanTransactionHelper(requestSpec, responseSpec);
+
+        final Integer clientID = ClientHelper.createClient(requestSpec, responseSpec);
+        Assertions.assertNotNull(clientID);
+
+        Integer holidayId = HolidayHelper.createTyoe1Holidays(requestSpec, responseSpec);
+        Assertions.assertNotNull(holidayId);
+
+        final Integer loanProductID = createLoanProduct(null);
+        Assertions.assertNotNull(loanProductID);
+
+        final Integer loanID = applyForLoanApplication(clientID.toString(), loanProductID.toString(), null, "01 January 2013");
+        Assertions.assertNotNull(loanID);
+
+        HashMap loanStatusHashMap = LoanStatusChecker.getStatusOfLoan(requestSpec, responseSpec, loanID);
+        LoanStatusChecker.verifyLoanIsPending(loanStatusHashMap);
+
+        loanStatusHashMap = this.loanTransactionHelper.approveLoan(AccountTransferTest.LOAN_APPROVAL_DATE, loanID);
+        LoanStatusChecker.verifyLoanIsApproved(loanStatusHashMap);
+
+        String loanDetails = this.loanTransactionHelper.getLoanDetails(requestSpec, responseSpec, loanID);
+        loanStatusHashMap = this.loanTransactionHelper.disburseLoanWithNetDisbursalAmount(AccountTransferTest.LOAN_DISBURSAL_DATE, loanID,
+                JsonPath.from(loanDetails).get("netDisbursalAmount").toString());
+        LoanStatusChecker.verifyLoanIsActive(loanStatusHashMap);
+
+        // Retrieving All Global Configuration details
+        final ArrayList<HashMap> globalConfig = GlobalConfigurationHelper.getAllGlobalConfigurations(requestSpec, responseSpec);
+        Assertions.assertNotNull(globalConfig);
+
+        // Updating Value for reschedule-repayments-on-holidays Global
+        // Configuration
+        Integer configId = (Integer) globalConfig.get(3).get("id");
+        Assertions.assertNotNull(configId);
+
+        HashMap configData = GlobalConfigurationHelper.getGlobalConfigurationById(requestSpec, responseSpec, configId.toString());
+        Assertions.assertNotNull(configData);
+
+        Boolean enabled = (Boolean) globalConfig.get(3).get("enabled");
+
+        if (!enabled) {
+            enabled = true;
+            GlobalConfigurationHelper.updateEnabledFlagForGlobalConfiguration(requestSpec, responseSpec, configId, enabled);
+        }
+
+        holidayId = HolidayHelper.activateHolidays(requestSpec, responseSpec, holidayId.toString());
+        Assertions.assertNotNull(holidayId);
+
+        HashMap holidayData = HolidayHelper.getHolidayById(requestSpec, responseSpec, holidayId.toString());
+        LinkedHashMap repaymentScheduleHashMap = JsonPath.from(loanDetails).get("repaymentSchedule");
+        ArrayList<LinkedHashMap> periods = (ArrayList<LinkedHashMap>) repaymentScheduleHashMap.get("periods");
+        String JobName = "Apply Holidays To Loans";
+
+        this.schedulerJobHelper.executeAndAwaitJob(JobName);
+
+        // Loan Repayment Schedule After Apply Holidays To Loans
+        loanDetails = this.loanTransactionHelper.getLoanDetails(requestSpec, responseSpec, loanID);
+        repaymentScheduleHashMap = JsonPath.from(loanDetails).get("repaymentSchedule");
+        periods = (ArrayList<LinkedHashMap>) repaymentScheduleHashMap.get("periods");
+        ArrayList<Integer> dateToApplyHolidays = null;
+
+        for (LinkedHashMap period : periods) {
+            ArrayList<Integer> fromDate = (ArrayList<Integer>) period.get("fromDate");
+            if (fromDate != null) {
+                dateToApplyHolidays = fromDate;
+            }
+        }
+
+        Assertions.assertNotNull(dateToApplyHolidays);
+    }
+
+    @Test
     public void testApplyDueFeeChargesForSavingsJobOutcome() throws InterruptedException {
         this.savingsAccountHelper = new SavingsAccountHelper(requestSpec, responseSpec);
 
