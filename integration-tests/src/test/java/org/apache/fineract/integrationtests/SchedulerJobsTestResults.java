@@ -435,17 +435,25 @@ public class SchedulerJobsTestResults {
         // Loan Repayment Schedule After Apply Holidays To Loans
         loanDetails = this.loanTransactionHelper.getLoanDetails(requestSpec, responseSpec, loanID);
         repaymentScheduleHashMap = JsonPath.from(loanDetails).get("repaymentSchedule");
-        periods = (ArrayList<LinkedHashMap>) repaymentScheduleHashMap.get("periods");
+        ArrayList<LinkedHashMap> periodsAfterRescheduleApplied = (ArrayList<LinkedHashMap>) repaymentScheduleHashMap.get("periods");
         ArrayList<Integer> dateToApplyHolidays = null;
 
-        for (LinkedHashMap period : periods) {
-            ArrayList<Integer> fromDate = (ArrayList<Integer>) period.get("fromDate");
-            if (fromDate != null) {
+        int periodsLength = periodsAfterRescheduleApplied.size();
+        for (int i = 0; i < periodsLength; i++) {
+            LinkedHashMap periodRescheduled = periodsAfterRescheduleApplied.get(i);
+            ArrayList<Integer> fromDate = (ArrayList<Integer>) periodRescheduled.get("fromDate");
+            LinkedHashMap periodBeforeRescheduled = periodsAfterRescheduleApplied.get(i);
+            ArrayList<Integer> dueDateBeforeRescheduled = (ArrayList<Integer>) periodBeforeRescheduled.get("dueDate");
+            if (fromDate != null && Objects.equals(fromDate.get(1), dueDateBeforeRescheduled.get(1))) {
                 dateToApplyHolidays = fromDate;
             }
+            Assertions.assertNotNull(dateToApplyHolidays);
+            Assertions.assertEquals(dueDateBeforeRescheduled.get(0), dateToApplyHolidays.get(0),
+                    "Verifying Repayment Rescheduled Year after Running Apply Holidays to Loans Scheduler Job");
+            Assertions.assertEquals(dueDateBeforeRescheduled.get(2), dateToApplyHolidays.get(2),
+                    "Verifying Repayment Rescheduled Day after Running Apply Holidays to Loans Scheduler Job");
         }
 
-        Assertions.assertNotNull(dateToApplyHolidays);
     }
 
     @Test
