@@ -441,27 +441,27 @@ public class SchedulerJobsTestResults {
         ArrayList<Integer> dueDateShiftedDueToHolidays = null;
 
         int periodsLength = periodsAfterRescheduleApplied.size();
-        for (int i = 0; i < periodsLength; i++) {
+        for (int i = 1; i < periodsLength; i++) {
             LinkedHashMap periodRescheduled = periodsAfterRescheduleApplied.get(i);
 
-            log.info("SchedulerJobsTestResults Repayment Reschdeuled Info, {}", periodsAfterRescheduleApplied.toString());
-            log.info("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}",
+            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info, {}", periodsAfterRescheduleApplied.toString());
+            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}",
                     (ArrayList<Integer>) periodRescheduled.get("fromDate"));
             ArrayList<Integer> fromDate = (ArrayList<Integer>) periodRescheduled.get("fromDate");
-            log.info("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}", fromDate.get(1));
-            log.info("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
+            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}", fromDate.get(1));
+            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
                     (ArrayList<Integer>) periodRescheduled.get("dueDate"));
-            log.info("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
+            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
                     ((ArrayList<Integer>) periodRescheduled.get("durDate")).get(1));
             LinkedHashMap periodBeforeRescheduled = periodsAfterRescheduleApplied.get(i + 1);
-            log.info("SchedulerJobsTestResults Repayment Reschdeuled Info {}", periodBeforeRescheduled.toString());
-            log.info("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}",
+            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info {}", periodBeforeRescheduled.toString());
+            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}",
                     (ArrayList<Integer>) periodBeforeRescheduled.get("fromDate"));
             ArrayList<Integer> periodBeforeRescheduledfromDate = (ArrayList<Integer>) periodBeforeRescheduled.get("fromDate");
-            log.info("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}", periodBeforeRescheduledfromDate.get(1));
-            log.info("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
+            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}", periodBeforeRescheduledfromDate.get(1));
+            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
                     (ArrayList<Integer>) periodBeforeRescheduled.get("durDate"));
-            log.info("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
+            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
                     ((ArrayList<Integer>) periodBeforeRescheduled.get("durDate")).get(1));
             ArrayList<Integer> dueDateBeforeRescheduled = (ArrayList<Integer>) periodBeforeRescheduled.get("dueDate");
             ArrayList<Integer> dueDate = (ArrayList<Integer>) periodRescheduled.get("dueDate");
