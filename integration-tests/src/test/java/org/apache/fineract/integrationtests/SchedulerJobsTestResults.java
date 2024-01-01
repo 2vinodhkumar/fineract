@@ -441,19 +441,25 @@ public class SchedulerJobsTestResults {
         int periodsLength = periodsAfterRescheduleApplied.size();
         for (int i = 0; i < periodsLength; i++) {
             LinkedHashMap periodRescheduled = periodsAfterRescheduleApplied.get(i);
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info"+periodsAfterRescheduleApplied.toString());
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date"+(ArrayList<Integer>) periodRescheduled.get("fromDate"));
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info" + periodsAfterRescheduleApplied.toString());
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date"
+                    + (ArrayList<Integer>) periodRescheduled.get("fromDate"));
             ArrayList<Integer> fromDate = (ArrayList<Integer>) periodRescheduled.get("fromDate");
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date"+(fromDate.get(1)));
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info due Date"+(ArrayList<Integer>) periodRescheduled.get("durDate"));
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info due Date"+((ArrayList<Integer>) periodRescheduled.get("durDate")).get(1));
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date" + (fromDate.get(1)));
+            System.out.println(
+                    "SchedulerJobsTestResults Repayment Reschdeuled Info due Date" + (ArrayList<Integer>) periodRescheduled.get("durDate"));
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info due Date"
+                    + ((ArrayList<Integer>) periodRescheduled.get("durDate")).get(1));
             LinkedHashMap periodBeforeRescheduled = periodsAfterRescheduleApplied.get(i);
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info"+periodBeforeRescheduled.toString());
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date"+(ArrayList<Integer>) periodBeforeRescheduled.get("fromDate"));
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info" + periodBeforeRescheduled.toString());
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date"
+                    + (ArrayList<Integer>) periodBeforeRescheduled.get("fromDate"));
             ArrayList<Integer> periodBeforeRescheduledfromDate = (ArrayList<Integer>) periodBeforeRescheduled.get("fromDate");
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date"+(periodBeforeRescheduledfromDate.get(1)));
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info due Date"+(ArrayList<Integer>) periodBeforeRescheduled.get("durDate"));
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info due Date"+((ArrayList<Integer>) periodBeforeRescheduled.get("durDate")).get(1));
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date" + (periodBeforeRescheduledfromDate.get(1)));
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info due Date"
+                    + (ArrayList<Integer>) periodBeforeRescheduled.get("durDate"));
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info due Date"
+                    + ((ArrayList<Integer>) periodBeforeRescheduled.get("durDate")).get(1));
             ArrayList<Integer> dueDateBeforeRescheduled = (ArrayList<Integer>) periodBeforeRescheduled.get("dueDate");
             if (fromDate != null && Objects.equals(fromDate.get(1), dueDateBeforeRescheduled.get(1))) {
                 dateToApplyHolidays = fromDate;
