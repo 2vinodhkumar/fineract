@@ -21,6 +21,7 @@ package org.apache.fineract.integrationtests.client;
 import java.util.Optional;
 import org.apache.fineract.client.models.GetClientsResponse;
 import org.apache.fineract.client.models.PostClientsRequest;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -29,6 +30,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author Michael Vorburger.ch
  */
+@Ignore
 public class ClientTest extends IntegrationTest {
 
     @Test

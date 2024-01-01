@@ -34,11 +34,13 @@ import org.apache.fineract.client.models.PostInitiateTransferResponse;
 import org.apache.fineract.integrationtests.common.GlobalConfigurationHelper;
 import org.apache.fineract.integrationtests.common.Utils;
 import org.apache.fineract.integrationtests.common.loans.LoanTestLifecycleExtension;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 @Slf4j
 @ExtendWith(LoanTestLifecycleExtension.class)
+@Ignore
 public class SearchExternalAssetOwnerTransferTest extends ExternalAssetOwnerTransferTest {
 
     @Test

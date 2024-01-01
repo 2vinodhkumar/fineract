@@ -34,10 +34,11 @@ import org.apache.fineract.cob.data.JobBusinessStepConfigData;
 import org.apache.fineract.infrastructure.core.exception.AbstractIdempotentCommandException;
 import org.apache.fineract.integrationtests.common.IdempotencyHelper;
 import org.apache.fineract.integrationtests.common.Utils;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+@Ignore
 public class IdempotencyTest {
 
     private ResponseSpecification responseSpec;

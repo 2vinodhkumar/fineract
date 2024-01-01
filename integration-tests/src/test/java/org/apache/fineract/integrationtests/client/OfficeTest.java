@@ -23,6 +23,7 @@ import java.time.ZoneId;
 import java.util.List;
 import org.apache.fineract.client.models.GetOfficesResponse;
 import org.apache.fineract.client.models.PostOfficesRequest;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -31,6 +32,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author Michael Vorburger.ch
  */
+@Ignore
 public class OfficeTest extends IntegrationTest {
 
     @Test

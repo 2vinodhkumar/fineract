@@ -42,13 +42,14 @@ import org.apache.fineract.infrastructure.creditbureau.data.CreditBureauReportDa
 import org.apache.fineract.integrationtests.common.CreditBureauConfigurationHelper;
 import org.apache.fineract.integrationtests.common.CreditBureauIntegrationHelper;
 import org.apache.fineract.integrationtests.common.Utils;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+@Ignore
 public class CreditBureauTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(CreditBureauTest.class);

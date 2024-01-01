@@ -452,7 +452,7 @@ public class SchedulerJobsTestResults {
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
                     (ArrayList<Integer>) periodRescheduled.get("dueDate"));
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
-                    ((ArrayList<Integer>) periodRescheduled.get("durDate")).get(1));
+                    ((ArrayList<Integer>) periodRescheduled.get("dueDate")).get(1));
             LinkedHashMap periodBeforeRescheduled = periodsAfterRescheduleApplied.get(i + 1);
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info {}", periodBeforeRescheduled.toString());
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}",
@@ -460,9 +460,9 @@ public class SchedulerJobsTestResults {
             ArrayList<Integer> periodBeforeRescheduledfromDate = (ArrayList<Integer>) periodBeforeRescheduled.get("fromDate");
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}", periodBeforeRescheduledfromDate.get(1));
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
-                    (ArrayList<Integer>) periodBeforeRescheduled.get("durDate"));
+                    (ArrayList<Integer>) periodBeforeRescheduled.get("dueDate"));
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
-                    ((ArrayList<Integer>) periodBeforeRescheduled.get("durDate")).get(1));
+                    ((ArrayList<Integer>) periodBeforeRescheduled.get("dueDate")).get(1));
             ArrayList<Integer> dueDateBeforeRescheduled = (ArrayList<Integer>) periodBeforeRescheduled.get("dueDate");
             ArrayList<Integer> dueDate = (ArrayList<Integer>) periodRescheduled.get("dueDate");
             if (dueDateBeforeRescheduled != null && Objects.equals(dueDateBeforeRescheduled.get(1), dueDate.get(1))) {

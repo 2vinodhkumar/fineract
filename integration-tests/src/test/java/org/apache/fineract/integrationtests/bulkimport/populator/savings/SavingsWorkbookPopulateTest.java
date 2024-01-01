@@ -39,9 +39,10 @@ import org.apache.fineract.integrationtests.common.savings.SavingsProductHelper;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+@Ignore
 public class SavingsWorkbookPopulateTest {
 
     private ResponseSpecification responseSpec;

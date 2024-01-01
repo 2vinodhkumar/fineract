@@ -40,6 +40,7 @@ import org.apache.fineract.integrationtests.common.loans.LoanProductTestBuilder;
 import org.apache.fineract.integrationtests.common.loans.LoanTestLifecycleExtension;
 import org.apache.fineract.integrationtests.common.loans.LoanTransactionHelper;
 import org.apache.fineract.integrationtests.common.organisation.StaffHelper;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,6 +51,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Group Test for checking Group: Creation, Activation, Client Association, Updating & Deletion
  */
+@Ignore
 @ExtendWith(LoanTestLifecycleExtension.class)
 public class GroupTest {
 

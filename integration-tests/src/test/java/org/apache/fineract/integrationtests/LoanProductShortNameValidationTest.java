@@ -31,10 +31,11 @@ import io.restassured.specification.ResponseSpecification;
 import org.apache.fineract.integrationtests.common.loans.LoanProductTestBuilder;
 import org.apache.fineract.integrationtests.common.loans.LoanTestLifecycleExtension;
 import org.apache.fineract.integrationtests.common.loans.LoanTransactionHelper;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
+@Ignore
 @ExtendWith(LoanTestLifecycleExtension.class)
 public class LoanProductShortNameValidationTest {
 

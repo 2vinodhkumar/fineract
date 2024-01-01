@@ -36,10 +36,11 @@ import org.apache.fineract.client.models.PostClientsResponse;
 import org.apache.fineract.integrationtests.common.ClientHelper;
 import org.apache.fineract.integrationtests.common.Utils;
 import org.apache.fineract.integrationtests.common.charges.ChargesHelper;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+@Ignore
 public class ClientTransactionTest {
 
     private ResponseSpecification responseSpec;

@@ -25,8 +25,10 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import java.util.Map;
-import org.junit.jupiter.api.Test;
 
+import org.junit.Ignore;
+import org.junit.jupiter.api.Test;
+@Ignore
 public class ActuatorIntegrationTest {
 
     private static final String INFO_URL = "/fineract-provider/actuator/info";

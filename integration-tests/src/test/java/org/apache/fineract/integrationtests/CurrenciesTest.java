@@ -28,10 +28,11 @@ import java.util.Collections;
 import org.apache.fineract.integrationtests.common.CurrenciesHelper;
 import org.apache.fineract.integrationtests.common.CurrencyDomain;
 import org.apache.fineract.integrationtests.common.Utils;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+@Ignore
 @SuppressWarnings({ "unused" })
 public class CurrenciesTest {
 

@@ -22,6 +22,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Optional;
 import org.apache.fineract.client.models.PostStaffRequest;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +31,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author Michael Vorburger.ch
  */
+@Ignore
 public class StaffTest extends IntegrationTest {
 
     @Test

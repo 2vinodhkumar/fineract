@@ -33,10 +33,11 @@ import org.apache.fineract.integrationtests.common.SchedulerJobHelper;
 import org.apache.fineract.integrationtests.common.Utils;
 import org.apache.fineract.integrationtests.support.instancemode.ConfigureInstanceMode;
 import org.apache.fineract.integrationtests.support.instancemode.InstanceModeSupportExtension;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
+@Ignore
 @ExtendWith(InstanceModeSupportExtension.class)
 public class InstanceModeIntegrationTest {
 

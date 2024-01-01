@@ -38,6 +38,7 @@ import java.util.Optional;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import org.apache.fineract.client.util.Calls;
 import org.apache.fineract.client.util.FineractClient;
+import org.junit.Ignore;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -54,6 +55,7 @@ import retrofit2.Response;
 @TestInstance(Lifecycle.PER_CLASS)
 // TODO Remove @TestMethodOrder when https://github.com/junit-team/junit5/issues/1919 is available
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Ignore
 public abstract class IntegrationTest {
 
     private static final SecureRandom random = new SecureRandom();

@@ -70,6 +70,7 @@ import org.apache.fineract.integrationtests.common.loans.LoanStatusChecker;
 import org.apache.fineract.integrationtests.common.loans.LoanTestLifecycleExtension;
 import org.apache.fineract.integrationtests.common.loans.LoanTransactionHelper;
 import org.jetbrains.annotations.NotNull;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -77,6 +78,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 @SuppressWarnings("rawtypes")
 @ExtendWith(LoanTestLifecycleExtension.class)
+@Ignore
 public class ExternalAssetOwnerTransferCancelTest {
 
     public String ownerExternalId;

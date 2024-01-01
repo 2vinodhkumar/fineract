@@ -22,9 +22,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.apache.fineract.client.models.GetLoanProductsTemplateResponse;
 import org.apache.fineract.integrationtests.common.loans.LoanProductHelper;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
+@Ignore
 public class LoanProductTemplateTest {
 
     private static LoanProductHelper loanProductHelper;

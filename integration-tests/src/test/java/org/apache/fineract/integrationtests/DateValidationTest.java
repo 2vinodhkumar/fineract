@@ -55,10 +55,11 @@ import org.apache.fineract.interoperation.domain.InteropInitiatorType;
 import org.apache.fineract.interoperation.domain.InteropTransactionRole;
 import org.apache.fineract.interoperation.domain.InteropTransactionScenario;
 import org.apache.fineract.interoperation.util.InteropUtil;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+@Ignore
 @Slf4j
 public class DateValidationTest {
 

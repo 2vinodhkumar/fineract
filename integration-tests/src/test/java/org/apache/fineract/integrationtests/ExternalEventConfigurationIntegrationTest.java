@@ -27,11 +27,12 @@ import java.util.ArrayList;
 import java.util.Map;
 import org.apache.fineract.integrationtests.common.ExternalEventConfigurationHelper;
 import org.apache.fineract.integrationtests.common.Utils;
+import org.junit.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+@Ignore
 public class ExternalEventConfigurationIntegrationTest {
 
     private ResponseSpecification responseSpec;

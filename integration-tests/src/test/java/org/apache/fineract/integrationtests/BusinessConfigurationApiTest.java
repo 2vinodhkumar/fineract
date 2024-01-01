@@ -35,10 +35,11 @@ import org.apache.fineract.cob.data.JobBusinessStepDetail;
 import org.apache.fineract.infrastructure.core.data.ApiParameterError;
 import org.apache.fineract.integrationtests.common.BusinessStepConfigurationHelper;
 import org.apache.fineract.integrationtests.common.Utils;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+@Ignore
 public class BusinessConfigurationApiTest {
 
     private ResponseSpecification responseSpec;

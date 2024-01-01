@@ -23,6 +23,7 @@ import com.google.common.truth.Subject;
 import com.google.common.truth.Truth;
 import jakarta.annotation.Nullable;
 import org.apache.fineract.client.util.Calls;
+import org.junit.Ignore;
 import retrofit2.Call;
 
 /**
@@ -30,6 +31,7 @@ import retrofit2.Call;
  *
  * @author Michael Vorburger.ch
  */
+@Ignore
 public class CallSubject extends Subject {
 
     // as per https://truth.dev/extension

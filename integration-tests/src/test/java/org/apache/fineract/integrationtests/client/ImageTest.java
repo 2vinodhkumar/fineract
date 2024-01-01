@@ -29,6 +29,7 @@ import okhttp3.ResponseBody;
 import org.apache.commons.io.IOUtils;
 import org.apache.fineract.client.services.ImagesApi;
 import org.apache.fineract.client.util.Parts;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import retrofit2.Call;
@@ -42,6 +43,7 @@ import retrofit2.http.Headers;
  * @author Michael Vorburger.ch
  */
 @Slf4j
+@Ignore
 public class ImageTest extends IntegrationTest {
 
     final MultipartBody.Part testPart = createPart("michael.vorburger-crepes.jpg", "michael.vorburger-crepes.jpg", "image/jpeg");

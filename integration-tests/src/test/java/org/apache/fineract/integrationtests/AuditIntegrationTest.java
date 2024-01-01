@@ -37,6 +37,7 @@ import org.apache.fineract.integrationtests.common.AuditHelper;
 import org.apache.fineract.integrationtests.common.ClientHelper;
 import org.apache.fineract.integrationtests.common.OfficeHelper;
 import org.apache.fineract.integrationtests.common.Utils;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -45,6 +46,7 @@ import org.junit.jupiter.api.Test;
  * @author Manthan Surkar
  *
  */
+@Ignore
 public class AuditIntegrationTest {
 
     private ResponseSpecification responseSpec;

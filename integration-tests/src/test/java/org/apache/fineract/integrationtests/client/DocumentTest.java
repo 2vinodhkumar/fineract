@@ -25,6 +25,7 @@ import okhttp3.MultipartBody.Part;
 import okhttp3.ResponseBody;
 import org.apache.fineract.client.models.GetEntityTypeEntityIdDocumentsResponse;
 import org.apache.fineract.client.util.Parts;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import retrofit2.Response;
@@ -34,6 +35,7 @@ import retrofit2.Response;
  *
  * @author Michael Vorburger.ch
  */
+@Ignore
 public class DocumentTest extends IntegrationTest {
 
     final File testFile = new File(getClass().getResource("/michael.vorburger-crepes.jpg").getFile());

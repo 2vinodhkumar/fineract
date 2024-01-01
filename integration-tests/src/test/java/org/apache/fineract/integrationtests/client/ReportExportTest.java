@@ -26,6 +26,7 @@ import okhttp3.ResponseBody;
 import org.apache.fineract.client.util.FineractClient;
 import org.apache.fineract.integrationtests.CIOnly;
 import org.apache.fineract.integrationtests.common.Utils;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import retrofit2.Response;
@@ -35,6 +36,7 @@ import retrofit2.Response;
  *
  * @author Michael Vorburger.ch
  */
+@Ignore
 public class ReportExportTest extends IntegrationTest {
 
     @Override

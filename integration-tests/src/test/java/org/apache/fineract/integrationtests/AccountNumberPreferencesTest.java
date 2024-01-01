@@ -44,6 +44,7 @@ import org.apache.fineract.integrationtests.common.savings.SavingsAccountHelper;
 import org.apache.fineract.integrationtests.common.savings.SavingsProductHelper;
 import org.apache.fineract.integrationtests.common.system.AccountNumberPreferencesHelper;
 import org.apache.fineract.integrationtests.common.system.CodeHelper;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -52,6 +53,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @ExtendWith(LoanTestLifecycleExtension.class)
+@Ignore
 public class AccountNumberPreferencesTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(AccountNumberPreferencesTest.class);

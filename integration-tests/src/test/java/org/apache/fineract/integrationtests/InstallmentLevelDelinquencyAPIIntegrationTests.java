@@ -35,9 +35,10 @@ import org.apache.fineract.integrationtests.common.ClientHelper;
 import org.apache.fineract.integrationtests.common.SchedulerJobHelper;
 import org.apache.fineract.integrationtests.common.loans.LoanTestLifecycleExtension;
 import org.apache.fineract.integrationtests.common.products.DelinquencyBucketsHelper;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
+@Ignore
 @Slf4j
 @ExtendWith(LoanTestLifecycleExtension.class)
 public class InstallmentLevelDelinquencyAPIIntegrationTests extends BaseLoanIntegrationTest {

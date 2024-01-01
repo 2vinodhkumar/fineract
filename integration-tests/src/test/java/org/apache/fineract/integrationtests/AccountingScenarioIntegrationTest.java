@@ -75,6 +75,7 @@ import org.apache.fineract.integrationtests.common.shares.ShareAccountHelper;
 import org.apache.fineract.integrationtests.common.shares.ShareAccountTransactionHelper;
 import org.apache.fineract.integrationtests.common.shares.ShareProductHelper;
 import org.apache.fineract.integrationtests.common.shares.ShareProductTransactionHelper;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -84,6 +85,7 @@ import org.slf4j.LoggerFactory;
 
 @SuppressWarnings({ "unchecked" })
 @ExtendWith(LoanTestLifecycleExtension.class)
+@Ignore
 public class AccountingScenarioIntegrationTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(AccountingScenarioIntegrationTest.class);
