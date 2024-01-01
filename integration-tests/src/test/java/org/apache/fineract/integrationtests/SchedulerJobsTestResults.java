@@ -436,7 +436,7 @@ public class SchedulerJobsTestResults {
         loanDetails = this.loanTransactionHelper.getLoanDetails(requestSpec, responseSpec, loanID);
         repaymentScheduleHashMap = JsonPath.from(loanDetails).get("repaymentSchedule");
         ArrayList<LinkedHashMap> periodsAfterRescheduleApplied = (ArrayList<LinkedHashMap>) repaymentScheduleHashMap.get("periods");
-        ArrayList<Integer> dateToApplyHolidays = null;
+        ArrayList<Integer> dueDateShiftedDueToHolidays = null;
 
         int periodsLength = periodsAfterRescheduleApplied.size();
         for (int i = 0; i < periodsLength; i++) {
@@ -445,28 +445,29 @@ public class SchedulerJobsTestResults {
             System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date"
                     + (ArrayList<Integer>) periodRescheduled.get("fromDate"));
             ArrayList<Integer> fromDate = (ArrayList<Integer>) periodRescheduled.get("fromDate");
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date" + (fromDate.get(1)));
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date" + fromDate.get(1));
             System.out.println(
-                    "SchedulerJobsTestResults Repayment Reschdeuled Info due Date" + (ArrayList<Integer>) periodRescheduled.get("durDate"));
+                    "SchedulerJobsTestResults Repayment Reschdeuled Info due Date" + (ArrayList<Integer>) periodRescheduled.get("dueDate"));
             System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info due Date"
                     + ((ArrayList<Integer>) periodRescheduled.get("durDate")).get(1));
-            LinkedHashMap periodBeforeRescheduled = periodsAfterRescheduleApplied.get(i);
+            LinkedHashMap periodBeforeRescheduled = periodsAfterRescheduleApplied.get(i + 1);
             System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info" + periodBeforeRescheduled.toString());
             System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date"
                     + (ArrayList<Integer>) periodBeforeRescheduled.get("fromDate"));
             ArrayList<Integer> periodBeforeRescheduledfromDate = (ArrayList<Integer>) periodBeforeRescheduled.get("fromDate");
-            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date" + (periodBeforeRescheduledfromDate.get(1)));
+            System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info from Date" + periodBeforeRescheduledfromDate.get(1));
             System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info due Date"
                     + (ArrayList<Integer>) periodBeforeRescheduled.get("durDate"));
             System.out.println("SchedulerJobsTestResults Repayment Reschdeuled Info due Date"
                     + ((ArrayList<Integer>) periodBeforeRescheduled.get("durDate")).get(1));
             ArrayList<Integer> dueDateBeforeRescheduled = (ArrayList<Integer>) periodBeforeRescheduled.get("dueDate");
-            if (fromDate != null && Objects.equals(fromDate.get(1), dueDateBeforeRescheduled.get(1))) {
-                dateToApplyHolidays = fromDate;
-                Assertions.assertNotNull(dateToApplyHolidays);
-                Assertions.assertEquals(dueDateBeforeRescheduled.get(0), dateToApplyHolidays.get(0),
+            ArrayList<Integer> dueDate = (ArrayList<Integer>) periodRescheduled.get("dueDate");
+            if (dueDateBeforeRescheduled != null && Objects.equals(dueDateBeforeRescheduled.get(1), dueDate.get(1))) {
+                dueDateShiftedDueToHolidays = dueDate;
+                Assertions.assertNotNull(dueDateShiftedDueToHolidays);
+                Assertions.assertEquals(dueDateBeforeRescheduled.get(0), dueDateShiftedDueToHolidays.get(0),
                         "Verifying Repayment Rescheduled Year after Running Apply Holidays to Loans Scheduler Job");
-                Assertions.assertEquals(dueDateBeforeRescheduled.get(2), dateToApplyHolidays.get(2),
+                Assertions.assertEquals(dueDateBeforeRescheduled.get(2), dueDateShiftedDueToHolidays.get(2),
                         "Verifying Repayment Rescheduled Day after Running Apply Holidays to Loans Scheduler Job");
             }
 
