@@ -25,9 +25,9 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import java.util.Map;
-
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
+
 @Ignore
 public class ActuatorIntegrationTest {
 

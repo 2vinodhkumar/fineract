@@ -41,6 +41,7 @@ import org.junit.jupiter.api.Test;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
+
 @Ignore
 public class DatatableUniqueAndIndexColumnTest {
 

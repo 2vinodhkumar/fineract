@@ -25,6 +25,7 @@ import org.apache.fineract.integrationtests.common.loans.LoanProductHelper;
 import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 @Ignore
 public class LoanProductTemplateTest {
 

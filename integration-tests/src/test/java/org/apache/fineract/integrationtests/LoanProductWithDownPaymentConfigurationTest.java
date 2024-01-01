@@ -58,6 +58,7 @@ import org.apache.fineract.integrationtests.common.products.DelinquencyBucketsHe
 import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 @Ignore
 public class LoanProductWithDownPaymentConfigurationTest {
 

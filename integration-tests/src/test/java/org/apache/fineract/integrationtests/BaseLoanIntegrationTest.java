@@ -77,6 +77,7 @@ import org.apache.fineract.portfolio.loanproduct.domain.PaymentAllocationType;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
+
 @Ignore
 @ExtendWith(LoanTestLifecycleExtension.class)
 public abstract class BaseLoanIntegrationTest {

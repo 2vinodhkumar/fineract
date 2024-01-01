@@ -45,6 +45,7 @@ import org.apache.fineract.portfolio.client.domain.ClientStatus;
 import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 @Ignore
 @Slf4j
 public class ClientExternalIdTest {

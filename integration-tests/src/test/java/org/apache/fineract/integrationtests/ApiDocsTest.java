@@ -27,6 +27,7 @@ import org.apache.fineract.integrationtests.common.Utils;
 import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 @Ignore
 public class ApiDocsTest {
 

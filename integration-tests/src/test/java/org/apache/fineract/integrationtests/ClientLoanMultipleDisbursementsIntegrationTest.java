@@ -43,6 +43,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 @Ignore
 /**
  * Client Loan Integration Test for checking Loan Application Repayments Schedule, loan charges, penalties, loan

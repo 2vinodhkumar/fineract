@@ -24,7 +24,6 @@ import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.ResponseBody;
 import org.apache.fineract.integrationtests.common.Utils;
-import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
