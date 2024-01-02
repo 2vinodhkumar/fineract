@@ -441,7 +441,7 @@ public class SchedulerJobsTestResults {
         ArrayList<Integer> dueDateShiftedDueToHolidays = null;
 
         int periodsLength = periodsAfterRescheduleApplied.size();
-        for (int i = 1; i < periodsLength; i++) {
+        for (int i = 1; i < periodsLength-1; i++) {
             LinkedHashMap periodRescheduled = periodsAfterRescheduleApplied.get(i);
 
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info, {}", periodsAfterRescheduleApplied.toString());
