@@ -453,7 +453,7 @@ public class SchedulerJobsTestResults {
                     (ArrayList<Integer>) periodRescheduled.get("dueDate"));
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
                     ((ArrayList<Integer>) periodRescheduled.get("dueDate")).get(1));
-            LinkedHashMap periodBeforeRescheduled = periodsAfterRescheduleApplied.get(i + 1);
+            LinkedHashMap periodBeforeRescheduled = periods.get(i + 1);
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info {}", periodBeforeRescheduled.toString());
             log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}",
                     (ArrayList<Integer>) periodBeforeRescheduled.get("fromDate"));
