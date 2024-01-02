@@ -433,9 +433,9 @@ public class SchedulerJobsTestResults {
         ArrayList<LinkedHashMap> periods = (ArrayList<LinkedHashMap>) repaymentScheduleHashMap.get("periods");
         String JobName = "Apply Holidays To Loans";
         LinkedHashMap<Integer, ArrayList<Integer>> periodsIdDueDateBeforeReschedule = new LinkedHashMap<Integer, ArrayList<Integer>>();
-        periods.stream().forEach(data -> {
-            periodsIdDueDateBeforeReschedule.put((Integer) data.get("period"), (ArrayList<Integer>) data.get("dueDate"));
-        });
+        for (LinkedHashMap period : periods.subList(1, periods.size())) {
+            periodsIdDueDateBeforeReschedule.put((Integer) period.get("period"), (ArrayList<Integer>) period.get("dueDate"));
+        }
 
         this.schedulerJobHelper.executeAndAwaitJob(JobName);
 
@@ -444,27 +444,28 @@ public class SchedulerJobsTestResults {
         repaymentScheduleHashMap = JsonPath.from(loanDetails).get("repaymentSchedule");
         ArrayList<LinkedHashMap> periodsAfterRescheduleApplied = (ArrayList<LinkedHashMap>) repaymentScheduleHashMap.get("periods");
         LinkedHashMap<Integer, ArrayList<Integer>> periodsIdDueDateAfterReschedule = new LinkedHashMap<Integer, ArrayList<Integer>>();
-        periodsAfterRescheduleApplied.stream().forEach(data -> {
-            periodsIdDueDateAfterReschedule.put((Integer) data.get("period"), (ArrayList<Integer>) data.get("dueDate"));
-        });
+        for (LinkedHashMap period : periodsAfterRescheduleApplied.subList(1, periods.size())) {
+            periodsIdDueDateAfterReschedule.put((Integer) period.get("period"), (ArrayList<Integer>) period.get("dueDate"));
+        }
 
-        ArrayList<Integer> holidayDateValues = (ArrayList<Integer>) holidayData.get("toDate");
+        ArrayList<Integer> holidayDateValues = (ArrayList<Integer>) holidayData.get("fromDate");
         LocalDate holidayDate = LocalDate.of(holidayDateValues.get(0), holidayDateValues.get(1), holidayDateValues.get(2));
-        periodsIdDueDateAfterReschedule.forEach((periodId, dueDateValues) -> {
+        for (int i = 1; i < periodsIdDueDateAfterReschedule.size() - 1; i++) {
+            ArrayList<Integer> dueDateValues = (ArrayList<Integer>) holidayData.get(i);
             LocalDate rescheduledDueDate = LocalDate.of(dueDateValues.get(0), dueDateValues.get(1), dueDateValues.get(2));
-            ArrayList<Integer> previousDueDateVlauesForCorrespondingPeriodId = periodsIdDueDateBeforeReschedule.get(periodId);
+            ArrayList<Integer> previousDueDateVlauesForCorrespondingPeriodId = periodsIdDueDateBeforeReschedule.get(i);
             LocalDate previousDueDate = LocalDate.of(previousDueDateVlauesForCorrespondingPeriodId.get(0),
                     previousDueDateVlauesForCorrespondingPeriodId.get(1), previousDueDateVlauesForCorrespondingPeriodId.get(2));
-            if (DateUtils.isBefore(previousDueDate, holidayDate)) {
-                Assertions.assertNotNull(rescheduledDueDate);
-                Assertions.assertEquals(previousDueDate, rescheduledDueDate,
-                        "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
-            } else {
+            if (!DateUtils.isBefore(previousDueDate, holidayDate)) {
                 Assertions.assertNotNull(rescheduledDueDate);
                 Assertions.assertNotEquals(previousDueDate, rescheduledDueDate,
                         "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
+            } else {
+                Assertions.assertNotNull(rescheduledDueDate);
+                Assertions.assertEquals(previousDueDate, rescheduledDueDate,
+                        "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
             }
-        });
+        }
     }
 
     @Test
