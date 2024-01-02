@@ -59,6 +59,7 @@ import org.apache.fineract.client.models.PostClientsResponse;
 import org.apache.fineract.client.models.PostLoansLoanIdTransactionsRequest;
 import org.apache.fineract.client.models.PutJobsJobIDRequest;
 import org.apache.fineract.infrastructure.businessdate.domain.BusinessDateType;
+import org.apache.fineract.infrastructure.core.service.DateUtils;
 import org.apache.fineract.integrationtests.common.BusinessDateHelper;
 import org.apache.fineract.integrationtests.common.ClientHelper;
 import org.apache.fineract.integrationtests.common.CollateralManagementHelper;
@@ -441,41 +442,29 @@ public class SchedulerJobsTestResults {
         ArrayList<Integer> dueDateShiftedDueToHolidays = null;
 
         int periodsLength = periodsAfterRescheduleApplied.size();
-        for (int i = 1; i < periodsLength - 1; i++) {
-            LinkedHashMap periodRescheduled = periodsAfterRescheduleApplied.get(i);
-
-            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info, {}", periodsAfterRescheduleApplied.toString());
-            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}",
-                    (ArrayList<Integer>) periodRescheduled.get("fromDate"));
-            ArrayList<Integer> fromDate = (ArrayList<Integer>) periodRescheduled.get("fromDate");
-            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}", fromDate.get(1));
-            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
-                    (ArrayList<Integer>) periodRescheduled.get("dueDate"));
-            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
-                    ((ArrayList<Integer>) periodRescheduled.get("dueDate")).get(1));
-            LinkedHashMap periodBeforeRescheduled = periods.get(i + 1);
-            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info {}", periodBeforeRescheduled.toString());
-            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}",
-                    (ArrayList<Integer>) periodBeforeRescheduled.get("fromDate"));
-            ArrayList<Integer> periodBeforeRescheduledfromDate = (ArrayList<Integer>) periodBeforeRescheduled.get("fromDate");
-            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info from Date {}", periodBeforeRescheduledfromDate.get(1));
-            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
-                    (ArrayList<Integer>) periodBeforeRescheduled.get("dueDate"));
-            log.warn("SchedulerJobsTestResults Repayment Reschdeuled Info due Date {}",
-                    ((ArrayList<Integer>) periodBeforeRescheduled.get("dueDate")).get(1));
-            ArrayList<Integer> dueDateBeforeRescheduled = (ArrayList<Integer>) periodBeforeRescheduled.get("dueDate");
-            ArrayList<Integer> dueDate = (ArrayList<Integer>) periodRescheduled.get("dueDate");
-            if (dueDateBeforeRescheduled != null && Objects.equals(dueDateBeforeRescheduled.get(1), dueDate.get(1))) {
-                dueDateShiftedDueToHolidays = dueDate;
-                Assertions.assertNotNull(dueDateShiftedDueToHolidays);
-                Assertions.assertEquals(dueDateBeforeRescheduled.get(0), dueDateShiftedDueToHolidays.get(0),
-                        "Verifying Repayment Rescheduled Year after Running Apply Holidays to Loans Scheduler Job");
-                Assertions.assertEquals(dueDateBeforeRescheduled.get(2), dueDateShiftedDueToHolidays.get(2),
-                        "Verifying Repayment Rescheduled Day after Running Apply Holidays to Loans Scheduler Job");
+        ArrayList<Integer> holidayDateValues = (ArrayList<Integer>) holidayData.get("toDate");
+        LocalDate holidayDate = LocalDate.of(holidayDateValues.get(0), holidayDateValues.get(1), holidayDateValues.get(2));
+        for (LinkedHashMap rescheduledPeriod : periodsAfterRescheduleApplied.subList(1, periodsAfterRescheduleApplied.size())) {
+            ArrayList<Integer> rescheduledDateValues = (ArrayList<Integer>) rescheduledPeriod.get("dueDate");
+            LocalDate rescheduledDueDateOfCurrentInstallment = LocalDate.of(rescheduledDateValues.get(0), rescheduledDateValues.get(1),
+                    rescheduledDateValues.get(2));
+            for (LinkedHashMap period : periods.subList(1, periods.size())) {
+                // Next Installement period info before reschdule applies. Next installment due date will be added to
+                // current installement dueData after reschedule job.
+                if ((Integer) period.get("period") == (Integer) rescheduledPeriod.get("period") + 1) {
+                    ArrayList<Integer> previousDueDateValues = (ArrayList<Integer>) period.get("dueDate");
+                    LocalDate previousDueDateOfNextInstallment = LocalDate.of(previousDueDateValues.get(0), previousDueDateValues.get(1),
+                            previousDueDateValues.get(2));
+                    if (!DateUtils.isBefore(previousDueDateOfNextInstallment, holidayDate)) {
+                        Assertions.assertNotNull(rescheduledDueDateOfCurrentInstallment);
+                        Assertions.assertEquals(previousDueDateOfNextInstallment, rescheduledDueDateOfCurrentInstallment,
+                                "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
+                    } else {
+                        Assertions.assertNotNull(rescheduledDueDateOfCurrentInstallment);
+                    }
+                }
             }
-
         }
-
     }
 
     @Test
