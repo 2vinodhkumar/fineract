@@ -461,8 +461,11 @@ public class SchedulerJobsTestResults {
                 Assertions.assertNotEquals(previousDueDate, rescheduledDueDate,
                         "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
             } else {
+                ArrayList<Integer> previousDueDateVlauesForCorrespondingNextPeriodId = periodsIdDueDateBeforeReschedule.get(i + 1);
+                LocalDate previousDueDateFromNextPeriod = LocalDate.of(previousDueDateVlauesForCorrespondingNextPeriodId.get(0),
+                        previousDueDateVlauesForCorrespondingNextPeriodId.get(1), previousDueDateVlauesForCorrespondingNextPeriodId.get(2));
                 Assertions.assertNotNull(rescheduledDueDate);
-                Assertions.assertEquals(previousDueDate, rescheduledDueDate,
+                Assertions.assertEquals(previousDueDateFromNextPeriod, rescheduledDueDate,
                         "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
             }
         }
