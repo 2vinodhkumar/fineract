@@ -451,7 +451,7 @@ public class SchedulerJobsTestResults {
         ArrayList<Integer> holidayDateValues = (ArrayList<Integer>) holidayData.get("fromDate");
         LocalDate holidayDate = LocalDate.of(holidayDateValues.get(0), holidayDateValues.get(1), holidayDateValues.get(2));
         for (int i = 1; i < periodsIdDueDateAfterReschedule.size() - 1; i++) {
-            ArrayList<Integer> dueDateValues = (ArrayList<Integer>) holidayData.get(i);
+            ArrayList<Integer> dueDateValues = (ArrayList<Integer>) periodsIdDueDateAfterReschedule.get(i);
             LocalDate rescheduledDueDate = LocalDate.of(dueDateValues.get(0), dueDateValues.get(1), dueDateValues.get(2));
             ArrayList<Integer> previousDueDateVlauesForCorrespondingPeriodId = periodsIdDueDateBeforeReschedule.get(i);
             LocalDate previousDueDate = LocalDate.of(previousDueDateVlauesForCorrespondingPeriodId.get(0),
