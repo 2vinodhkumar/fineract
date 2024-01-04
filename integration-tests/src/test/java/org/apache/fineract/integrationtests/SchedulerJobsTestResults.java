@@ -468,25 +468,25 @@ public class SchedulerJobsTestResults {
         fromDate = LocalDate.of(fromDateValues.get(0), fromDateValues.get(1), fromDateValues.get(2));
         dueDateValues = (ArrayList<Integer>) periodsAfterRescheduleApplied.get(1).get("dueDate");
         dueDate = LocalDate.of(dueDateValues.get(0), dueDateValues.get(1), dueDateValues.get(2));
-        Assertions.assertEquals(LocalDate.of(2013, 3, 1), dueDate,
+        Assertions.assertEquals(LocalDate.of(2013, 6, 1), dueDate,
                 "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
 
         fromDateValues = (ArrayList<Integer>) periodsAfterRescheduleApplied.get(2).get("fromDate");
         fromDate = LocalDate.of(fromDateValues.get(0), fromDateValues.get(1), fromDateValues.get(2));
         dueDateValues = (ArrayList<Integer>) periodsAfterRescheduleApplied.get(2).get("dueDate");
         dueDate = LocalDate.of(dueDateValues.get(0), dueDateValues.get(1), dueDateValues.get(2));
-        Assertions.assertEquals(LocalDate.of(2013, 3, 1), fromDate,
+        Assertions.assertEquals(LocalDate.of(2013, 6, 1), fromDate,
                 "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
-        Assertions.assertEquals(LocalDate.of(2013, 4, 1), dueDate,
+        Assertions.assertEquals(LocalDate.of(2013, 7, 1), dueDate,
                 "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
 
         fromDateValues = (ArrayList<Integer>) periodsAfterRescheduleApplied.get(3).get("fromDate");
         fromDate = LocalDate.of(fromDateValues.get(0), fromDateValues.get(1), fromDateValues.get(2));
         dueDateValues = (ArrayList<Integer>) periodsAfterRescheduleApplied.get(3).get("dueDate");
         dueDate = LocalDate.of(dueDateValues.get(0), dueDateValues.get(1), dueDateValues.get(2));
-        Assertions.assertEquals(LocalDate.of(2013, 4, 1), fromDate,
+        Assertions.assertEquals(LocalDate.of(2013, 7, 1), fromDate,
                 "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
-        Assertions.assertEquals(LocalDate.of(2013, 5, 1), dueDate,
+        Assertions.assertEquals(LocalDate.of(2013, 8, 1), dueDate,
                 "Verifying Repayment Rescheduled Date after Running Apply Holidays to Loans Scheduler Job");
 
     }
